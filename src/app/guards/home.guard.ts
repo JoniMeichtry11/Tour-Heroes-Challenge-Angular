@@ -13,7 +13,7 @@ export class HomeGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     // Si el "token" NO existe, redirecciono al Login.
-    if(!localStorage.getItem("token")){
+    if(localStorage.getItem("token")){
       this.router.navigate(['/auth/login']);
       return false
     }

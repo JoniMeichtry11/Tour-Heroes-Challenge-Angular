@@ -13,7 +13,7 @@ export class AuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     // Si el "token" existe, redirecciono al Home.
-    if(localStorage.getItem("token")){
+    if(!localStorage.getItem("token")){
       this.router.navigate(['/home']);
       return false
     }

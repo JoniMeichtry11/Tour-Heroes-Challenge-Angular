@@ -12,9 +12,5 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  // Log out (Limpio el "LocalStorage")
-  cleanLocalStorage(){
-    localStorage.clear();
-    this.router.navigate(['/auth/login'])
-  }
+
 }
