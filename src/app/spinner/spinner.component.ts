@@ -10,9 +10,7 @@ export class SpinnerComponent implements OnInit {
 
   isLoading$: boolean = false;
 
-  constructor(private spinner: SpinnerService) {
-    this.spinner.cerrarSpinner();
-  }
+  constructor(private spinner: SpinnerService) {}
 
   ngOnInit(): void{
     this.spinner.getSpinner$().subscribe(spinner => {

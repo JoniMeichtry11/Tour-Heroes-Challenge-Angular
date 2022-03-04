@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { TeamHeroesService } from 'src/app/services/team-heroes.service';
+import { Component, Inject, OnInit } from '@angular/core';
 
+import { TeamHeroesService } from 'src/app/services/team-heroes.service';
 import { ToastrService } from 'ngx-toastr';
+import { InfoHeroeService } from 'src/app/services/info-heroe.service';
 
 @Component({
   selector: 'app-team',
@@ -35,7 +36,8 @@ export class TeamComponent implements OnInit {
     {name: "power", valor: 0, percentage: 0},
     {name: "combat", valor: 0, percentage: 0},
   ];
-  constructor(private teamHeroes: TeamHeroesService, private toastTr: ToastrService) {}
+  
+  constructor(private teamHeroes: TeamHeroesService, private toastTr: ToastrService, private infoHeroe: InfoHeroeService) {}
 
   ngOnInit(): void {
     this.teamHeroes.SharingHeroe.subscribe({
@@ -122,10 +124,10 @@ export class TeamComponent implements OnInit {
                   } else if(mayor === this.progressTwo[2].valor){
                     this.teamTitle =  this.progressTwo[2].name;
                   }
-                  // Calculo el promedio de el peso y la altura
-                  this.calculateAverage(card, "sumando");
                   // Agrego el heroe satisfactoriamente :D
                   this.cards$.push(card);
+                  // Calculo el promedio de el peso y la altura
+                  this.calculateAverage(card, "sumando");
                 }else{
                   this.toastTr.error("You can't add more than 3 good heroes");
                 }
@@ -173,10 +175,10 @@ export class TeamComponent implements OnInit {
                   } else {
                     this.progressTwo[2].valor += Number(card.powerstats.combat);
                   }
-                  // Calculo el promedio de el peso y la altura
-                  this.calculateAverage(card, "sumando");
                   // Agrego el villano satisfactoriamente :D
                   this.cards$.push(card);
+                  // Calculo el promedio de el peso y la altura
+                  this.calculateAverage(card, "sumando");
                 }else{
                   this.toastTr.error("You can't add more than 3 villains");
                 }
@@ -189,12 +191,16 @@ export class TeamComponent implements OnInit {
         } else{
           this.headerTeam = false;
         }
+      },
+      error: (error) => {
+        console.log("Ocurrió un error: ", error);
       }
     })
   }
 
   calculateAverage(card: any, calculo: string){
     let cantidadCards = this.cards$.length;
+    console.log(cantidadCards);
     let height = Number(card.appearance.height[1].slice(0, -2));
     let weight = Number(card.appearance.weight[1].slice(0, -2));
     if(isNaN(height)){
@@ -212,6 +218,7 @@ export class TeamComponent implements OnInit {
         this.totalWeight += weight;
         this.averageWeight = this.totalWeight;
       } else {
+        console.log(cantidadCards);
         // Promedio de altura
         this.totalHeight += height;
         this.averageHeight = this.totalHeight / cantidadCards;
@@ -291,20 +298,24 @@ export class TeamComponent implements OnInit {
     } else if(mayor === this.progressTwo[2].valor){
       this.teamTitle =  this.progressTwo[2].name;
     }
-    // Calculo el promedio de el peso y la altura
-    this.calculateAverage(card, "restando");
     // Valido si es un heroe o un villano y bajo su "cantidad"
     if(card.biography.alignment === 'good'){
-        this.cardsHeroe -= 1;
+      this.cardsHeroe -= 1;
     } else{
       this.cardsEvil -= 1;
     }
     // Elimino la card
     this.cards$ = this.cards$.filter((heroe:any) => {
       return heroe.id !== card.id;
-    })
+    });
     if(this.cards$.length === 0){
       this.headerTeam = false;
     }
+    // Calculo el promedio de el peso y la altura
+    this.calculateAverage(card, "restando");
+  }
+
+  modalHeroe(card: any){
+    this.infoHeroe.SharingHeroeData = card;
   }
 }

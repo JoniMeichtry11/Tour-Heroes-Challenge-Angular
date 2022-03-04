@@ -1,1 +1,35 @@
-<p>info works!</p>
+<div class="modal fade" id="heroeModal" tabindex="-1" aria-labelledby="infoHeroeLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-dark">
+      <div class="modal-body bg-dark">
+        <div class="container d-flex flex-column justify-content-center">
+          <div class="row">
+            <div class="col-12">
+              <div class="d-flex flex-column align-items-center">
+                <h2>{{heroeData$.biography?.["full-name"]}}</h2>
+                <h6 class="blockquote-footer mt-3 text-center" [ngStyle]="aliasContainer">{{alias}}</h6>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col-6 d-flex justify-content-end">
+              <img [src]="heroeData$.image?.url" class="card-img" alt="heroe" fallimg style="max-height: 200px; max-width: 300px;">
+            </div>
+            <div class="col-6">
+              <div style="height: 230px;">
+                <p>Peso: {{heroeData$.appearance.weight[1]}}</p>
+                <p>Altura: {{heroeData$.appearance.height[1]}}</p>
+                <p>Color de ojos: {{heroeData$.appearance?.["eye-color"]}}</p>
+                <p>Color de cabello: {{heroeData$.appearance?.["hair-color"]}}</p>
+                <p>Lugar de trabajo: {{heroeData$.work?.occupation}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer bg-dark">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
