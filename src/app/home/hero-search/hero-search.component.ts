@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { HeroesService } from 'src/app/services/heroes.service';
 import { TeamHeroesService } from 'src/app/services/team-heroes.service';
 
@@ -16,7 +17,7 @@ export class HeroSearchComponent implements OnInit {
 
   error$: boolean = false;
 
-  constructor(private heroService: HeroesService, private teamHeroe: TeamHeroesService) {
+  constructor(private heroService: HeroesService, private teamHeroe: TeamHeroesService, private router: Router) {
     this.heroe$ = this.heroService.SharingHeroe
   }
 

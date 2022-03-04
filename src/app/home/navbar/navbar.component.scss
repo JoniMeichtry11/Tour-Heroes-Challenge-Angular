@@ -1,5 +1,15 @@
+.log-out-pc{
+  margin-left: auto;
+}
+
 @media (max-width: 992px) {
   .search-top-nav{
+    display: none !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .log-out{
     display: none !important;
   }
 }

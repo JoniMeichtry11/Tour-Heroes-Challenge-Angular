@@ -5,17 +5,18 @@
       <img src="../../../assets/img/challenge.png" alt="challenge" style="height: 30px;">
     </div>
     <div class="col-4 col-lg-2">
-      <button class="btn btn-outline-light" (click)="cleanLocalStorage()">Log out</button>
+      <button class="btn btn-outline-light log-out" (click)="cleanLocalStorage()">Log out</button>
     </div>
     <!-- Search -->
     <div class="col-6 search-top-nav">
       <nav class="navbar navbar-dark bg-dark">
-        <div class="d-flex justify-content-center container-fluid">
-          <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search Hero" aria-label="Search" [formControl]="search">
-            <button class="btn btn-outline-light" type="submit" (click)="searchHeroComponent(search.value)">Search</button>
-          </form>
-        </div>
+        <form class="d-flex justify-content-center" style="width: 100%;">
+          <input class="form-control me-2" type="search" placeholder="Search Hero" aria-label="Search" [formControl]="search" style="max-width: 270px;">
+          <button class="btn btn-outline-success" type="submit" (click)="searchHeroComponent(search.value)">Search</button>
+          <div class="px-2 log-out-pc">
+            <button class="btn btn-outline-light" (click)="cleanLocalStorage()">Log out</button>
+          </div>
+        </form>
       </nav>
     </div>
   </div>
