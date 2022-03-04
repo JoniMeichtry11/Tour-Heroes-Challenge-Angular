@@ -1,15 +1,5 @@
 # TourHeroes
 
-login: done
+uppercase title team
 
-Estructura del Home: to do
-
-buscar heroes, buscador que aparece cuando hago "focus" y se va cuando hago "outfocus"
-o si no, botones en el navbar para crear equipo o para ver mi equipo
-
-buscador de heroes
-
-Mi equipo
-
-estadistica
-
+change logout in 970px
