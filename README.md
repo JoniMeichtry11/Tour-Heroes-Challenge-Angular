@@ -1,7 +1,13 @@
 # TourHeroes
 
-background video avengers
+Proyecto para el reto de Alkemy! Este me llevó casi un mes de desarrollo. Estuvo genial y aprendí muchisimo :D
 
-test unitarios (investigar)
+# Pasos para compilar
 
-subir a produccion/firebase el proyecto
+$ git clone https://github.com/JoniMeichtry11/Tour-Heroes-Challenge-Angular.git
+
+$ npm i
+
+$ ng serve -o
+
+ya lo podrás correr :D
