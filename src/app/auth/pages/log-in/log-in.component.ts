@@ -40,7 +40,7 @@ export class LogInComponent implements OnInit {
       error: (err) => {
         console.log("errorHTTP: ", err)
         messageError.style.display = 'block';
-        this.messageErrorText = err.error.error;
+        this.messageErrorText = err.message;
       }
     })
   }
