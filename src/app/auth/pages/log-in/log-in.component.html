@@ -1,4 +1,6 @@
-<div class="container">
+<div class="overlay">
+</div>
+<div class="absolute">
   <div class="d-flex flex-column justify-content-center align-items-center" style="height: 100vh;">
     <div class="cardLogin row border border-2 rounded ps-3 pe-3 pt-2 pb-4">
       <div class="d-flex justify-content-center">
@@ -61,4 +63,11 @@
   </div>
 </div>
 <!-- background video -->
-<video src=""></video>
+<video [muted]="sonido" autoplay loop>
+  <source src="../../../../assets/endgame.mp4">
+</video>
+<!-- Sound -->
+<div class="btn-sonido-container">
+  <button type="button" class="btn btn-sonido" (click)="sonidoVideo()" *ngIf="!sonido"><i class="fas fa-volume-up"></i></button>
+  <button type="button" class="btn btn-sonido" (click)="sonidoVideo()" *ngIf="sonido"><i class="fas fa-volume-mute"></i></button>
+</div>

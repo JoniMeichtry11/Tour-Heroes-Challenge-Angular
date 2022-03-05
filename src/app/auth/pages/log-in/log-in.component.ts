@@ -17,6 +17,8 @@ export class LogInComponent implements OnInit {
 
   group!: FormGroup;
   messageErrorText = "";
+  sonido: boolean = true;
+
 
   constructor(private autenticationService: AutenticationService, private router: Router) { }
 
@@ -31,14 +33,24 @@ export class LogInComponent implements OnInit {
     const messageError = this.errorMessage.nativeElement;
     this.autenticationService.SignIn(form).subscribe({
       next: (data) => {
+        console.log("data: ", data);
         localStorage.setItem("token", data.token);
         this.router.navigate(['/home']);
       },
       error: (err) => {
+        console.log("errorHTTP: ", err)
         messageError.style.display = 'block';
         this.messageErrorText = err.error.error;
       }
     })
+  }
+
+  sonidoVideo(){
+    if(this.sonido === true){
+      this.sonido = false
+    }else {
+      this.sonido = true;
+    }
   }
 
   get Email(){return this.group.get('email')}
