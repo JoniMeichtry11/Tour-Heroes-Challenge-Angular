@@ -4,6 +4,9 @@
     <div *ngIf="!headerTeam" class="d-flex justify-content-center">
       <h3 class="mt-2">Find a Hero and add him to your team</h3>
     </div>
+    <div *ngIf="!headerTeam" class="d-flex justify-content-center">
+      <h3 class="mt-2 text-danger"><strong>(SUPERHERO API IS NOT  WORKING)</strong></h3>
+    </div>
     <div *ngIf="headerTeam" class="col-lg-6 d-flex flex-column align-items-center justify-content-center">
       <h2 class="mt-2">{{teamTitle | titlecase}} team</h2>
       <p>average height: {{averageHeight | number: '1.0-0'}} cm</p>
